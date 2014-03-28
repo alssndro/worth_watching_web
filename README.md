@@ -1,9 +1,8 @@
-# My App Readme
+![](public/img/ticket-logo.png)
 
-A minimal Ruby app template, includes Minitest for testing
+## Fresh Popcorn
+Aggregates ratings and reviews of the latest movie releases.
 
-# Things to modify
+## Configuring the app
 
-app_name and file name in lib/
-require app_name in test/test_helper.rb
-app_name in test files
+API keys
