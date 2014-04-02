@@ -3,14 +3,23 @@ source 'https://rubygems.org'
 # Development dependencies
 gem 'rake'
 gem 'sinatra'
-gem 'httparty'
 gem 'haml'
+gem 'unicorn'
 
-gem 'pry'
+gem 'pg'
+gem 'activerecord'
+gem 'sinatra-activerecord'
 
 # Testing dependencies
 group :test do
-  gem 'minitest'
+  gem 'rspec'
   gem 'rack-test'
-  gem 'vcr'
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'faker'
+end
+
+group :development do
+  gem 'shotgun'
+  gem 'tux'
 end
