@@ -1,5 +1,6 @@
-require_relative '../fresh_popcorn_app.rb'
 ENV['RACK_ENV'] = 'test'
+
+require_relative '../fresh_popcorn_app.rb'
 
 # recursively require all model files
 Dir[Dir.pwd + "/models/**/*.rb"].each { |f| require f }

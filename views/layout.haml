@@ -6,9 +6,13 @@
     %link{:rel => 'stylesheet', :href => '/css/normalize.css', :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => '/css/style.css', :type => 'text/css'}
     %script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'}
-    %script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'}
+
   %body
     #container
-      %h1 App Name
+      %a{href: '/'}
+        %h1 Fresh Popcorn
       #content
         = yield
+    %script{:type => 'text/javascript', :src => '/js/isotope.pkgd.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/imagesloaded.pkgd.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/app.js'}

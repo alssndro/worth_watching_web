@@ -5,7 +5,7 @@ require 'worth_watching'
 
 desc "Update movies"
 task :update_movies do
-  Movie.delete_all
+  #Movie.delete_all
 
   update_movie_db(:cinema, :box_office, :uk)
 
@@ -16,14 +16,16 @@ task :update_movies do
 end
 
   def update_movie_db(release_type, list_name, list_country)
-    #puts Movie.all.size
+
     settings = YAML.load_file("config/settings.yaml")
 
     aggregator = WorthWatching::Aggregator.new(settings["rt_api_key"], settings["tmdb_api_key"])
 
-    movies = aggregator.aggregate_list(list_name, list_country, 2)
+    movies = aggregator.aggregate_list(list_name, list_country, 6)
+    puts "Retrieved #{movies.size} movies"
 
     movies.each do |movie|
+      puts "Adding #{movie.title}"
       current_movie = Movie.new
       current_movie.release_type = release_type.to_s
       current_movie.title = movie.title
@@ -45,7 +47,7 @@ end
         current_movie.reviews.build(review.to_hash)
       end
 
-      update_result = current_movie.save ? "#{movie.title} successully added" : "#{movie.title} failed"
+      update_result = current_movie.save ? "'#{movie.title}' successully added" : "#{movie.title} failed"
       puts update_result
     end
   end

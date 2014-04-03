@@ -8,7 +8,7 @@ require 'paperclip'
 class FreshPopcornApp < Sinatra::Base
 
   configure do
-    db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/fresh_popcorn_dev')
+    db = URI.parse(ENV["DATABASE_URL"] || "postgres://localhost/fresh_popcorn_#{environment}")
 
     ActiveRecord::Base.establish_connection(
         :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
@@ -20,7 +20,8 @@ class FreshPopcornApp < Sinatra::Base
   end
 
   get '/' do
-    @movies = Movie.all
+    # Want cinema releases first
+    @movies = Movie.where(release_type: "cinema") + Movie.where(release_type: "dvd")
     haml :home
   end
 

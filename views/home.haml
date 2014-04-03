@@ -1,13 +1,39 @@
 %h1 Homepage
-- @movies.each do |movie|
-  .movie
-    %a{href: "movies/#{movie.id}"}
-      %img{src: movie.poster.url(:small)}
-      %h2
-        = movie.title
-      %p
+#sort-menu
+  %button{:data => {"sort-by" => 'average_rating'}}
+    Sort by Average Rating
+  %button{:data => {"sort-by" => 'rt_rating'}}
+    Sort by Rotten Tomatoes
+  %button{:data => {"sort-by" => 'imdb_rating'}}
+    Sort by IMDb
+  %button{:data => {"sort-by" => 'metacritic_rating'}}
+    Sort by Metacritic
+#filter-menu
+  %button{id: "filter-cinema"}
+    Only Cinema/Theater
+  %button{id: "filter-dvd"}
+    Only DVD
+  %button{id: "filter-all"}
+    All
+.movie-list.clearfix
+  - @movies.each do |movie|
+    %div{class: "movie #{movie.release_type} clearfix"}
+      %a{href: "movies/#{movie.id}"}
+        %img.small-poster{src: movie.poster.url(:small)}
+      %h3 Average Rating
+      %p.average-rating.rating
         = movie.average_rating
-%a{href: 'cinema'}
-  Cinema
-%a{href: 'dvd'}
-  DVD
+      %h4 Rotten Tomatoes
+      %p.rt-rating.rating
+        = movie.rt_rating
+      %h4 IMDb
+      %p.imdb-rating.rating
+        = movie.imdb_rating * 10
+      %h4 Metacritic
+      %p.metacritic-rating.rating
+        = movie.metacritic_rating
+%p
+  %a{href: 'cinema'}
+    Cinema
+  %a{href: 'dvd'}
+    DVD
