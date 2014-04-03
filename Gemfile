@@ -10,7 +10,9 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 
-# Testing dependencies
+gem 'paperclip'
+gem 'worth_watching'
+
 group :test do
   gem 'rspec'
   gem 'rack-test'

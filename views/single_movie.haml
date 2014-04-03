@@ -1,0 +1,4 @@
+%h1
+  = @movie.title
+%img{src: @movie.poster.url(:big)}
+  = @movie.average_rating

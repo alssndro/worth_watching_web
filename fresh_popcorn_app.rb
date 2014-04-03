@@ -1,6 +1,10 @@
 require 'sinatra/base'
 require 'sinatra/activerecord'
 
+require './models/movie'
+require './models/review'
+require 'paperclip'
+
 class FreshPopcornApp < Sinatra::Base
 
   configure do
@@ -16,7 +20,12 @@ class FreshPopcornApp < Sinatra::Base
   end
 
   get '/' do
+    @movies = Movie.all
     haml :home
   end
 
+  get '/movies/:id' do
+    @movie = Movie.find(params[:id])
+    haml :single_movie
+  end
 end

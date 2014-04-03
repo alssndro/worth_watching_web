@@ -3,7 +3,7 @@ require 'test_helper'
 describe "Movie" do
   let(:movie) { FactoryGirl.create(:movie_with_reviews) }
 
-  it "has a valid contructor" do
+  it "has a valid constructor" do
     expect(movie).to be_an_instance_of(Movie)
   end
 

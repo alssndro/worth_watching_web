@@ -1,1 +1,13 @@
 %h1 Homepage
+- @movies.each do |movie|
+  .movie
+    %a{href: "movies/#{movie.id}"}
+      %img{src: movie.poster.url(:small)}
+      %h2
+        = movie.title
+      %p
+        = movie.average_rating
+%a{href: 'cinema'}
+  Cinema
+%a{href: 'dvd'}
+  DVD
