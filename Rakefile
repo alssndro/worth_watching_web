@@ -4,24 +4,34 @@ require "sinatra/activerecord/rake"
 require 'worth_watching'
 
 desc "Update movies"
-task :update_movies do
-  #Movie.delete_all
+task :update_movies, [:movie_limit] do |t, args|
 
-  update_movie_db(:cinema, :box_office, :uk)
+  # Default argument
+  args.with_defaults(movie_limit: 5)
+  
+  # Stop ruby buffering stdout printed status string appear immediately
+  $stdout.sync = true
 
+  old_movies = Movie.all.to_a
+
+  update_movie_db(:cinema, :box_office, :uk, args.movie_limit)
   puts "Finished updating cinema releases\n"
 
-  #update_movie_db(:dvd)
-  #puts "Finished updating dvd releases\n"
+  update_movie_db(:dvd, :top_rentals, :uk, args.movie_limit)
+  puts "Finished updating dvd releases\n"
+  #binding.pry
+
+  # Remove old movies
+  old_movies.each { |movie| movie.destroy! }
 end
 
-  def update_movie_db(release_type, list_name, list_country)
+  def update_movie_db(release_type, list_name, list_country, result_limit)
 
     settings = YAML.load_file("config/settings.yaml")
 
     aggregator = WorthWatching::Aggregator.new(settings["rt_api_key"], settings["tmdb_api_key"])
 
-    movies = aggregator.aggregate_list(list_name, list_country, 6)
+    movies = aggregator.aggregate_list(list_name, list_country, result_limit)
     puts "Retrieved #{movies.size} movies"
 
     movies.each do |movie|

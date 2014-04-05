@@ -25,7 +25,15 @@ class FreshPopcornApp < Sinatra::Base
   end
 
   get '/movies/:id' do
-    @movie = Movie.find(params[:id])
-    haml :single_movie
+    begin
+      @movie = Movie.find(params[:id])
+      haml :single_movie
+    rescue ActiveRecord::RecordNotFound
+      redirect to ('/')
+    end
+  end
+
+  get '/faq' do
+    haml :faq
   end
 end

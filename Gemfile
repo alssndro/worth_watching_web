@@ -24,4 +24,5 @@ end
 group :development do
   gem 'shotgun'
   gem 'tux'
+  gem 'pry'
 end

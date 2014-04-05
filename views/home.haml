@@ -21,7 +21,13 @@
   - @movies.each do |movie|
     %div{class: "movie #{movie.release_type} clearfix"}
       %a{href: "movies/#{movie.id}"}
-        %img.small-poster{src: movie.poster.url(:small)}
+        -if movie.poster.url.match(/default/)
+          .blank-poster
+            %img.small-poster{src: movie.poster.url(:big)}
+            %p.blank-poster-title
+              = movie.title
+        -else
+          %img.small-poster{src: movie.poster.url(:big)}
       .ratings
         %p.average-rating.rating
           %a{href: "movies/#{movie.id}"}

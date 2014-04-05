@@ -12,9 +12,15 @@
       %a{href: '/'}
         %img.header-logo{src: "/img/logo.png"}
       %p.description
-        Movie ratings from different sources, in one place.
+        Movie ratings from <a href="faq">different sources</a>, in one place.
     .main
       = yield
+    %footer
+      %img.footer-logo{src: '/img/popcorn-logo@2x.png'}
+      %p.footer-info
+        A project by <a href="http://github.com/alessndro">alessndro</a>, powered by <a href="http://github.com/alessndro/worth_watching">worth_watching</a>.
+      %p.footer-info
+        <a href="http://github.com/alessndro/worth_watching_web">View on Github</a>
     %script{:type => 'text/javascript', :src => '/js/isotope.pkgd.min.js'}
     %script{:type => 'text/javascript', :src => '/js/imagesloaded.pkgd.min.js'}
     %script{:type => 'text/javascript', :src => '/js/app.js'}

@@ -4,7 +4,7 @@
   .big-movie-left-col.clearfix
     .poster-rating
       .big-poster-cont
-        %img{src: @movie.poster.url(:small)}
+        %img{src: @movie.poster.url(:big)}
       .ratings
         %p.average-rating.rating
           = @movie.average_rating

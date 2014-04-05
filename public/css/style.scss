@@ -96,9 +96,8 @@ textarea {
  Author's custom styles
  ========================================================================== */
 
-body {
+.main {
   padding: 0 0.8%;
-
 }
 
 img {
@@ -168,6 +167,7 @@ pre,table,fieldset,hr {
 
 header {
   margin: 0 0 4.5em 0;
+  padding: 0 0.8%;
 }
 
 .header-logo {
@@ -216,10 +216,8 @@ header {
 
 }
 
-
 .small-poster {
   opacity: 0.8;
-  //margin: 0 0 1.5em 0;
 
   transition: opacity 0.2s ease-in;
   -webkit-transition: opacity 0.2s ease-in;
@@ -306,6 +304,20 @@ button {
   outline: none;
 }
 
+.blank-poster {
+  position: relative;
+}
+
+.blank-poster-title {
+  position: absolute;
+  color: $white;
+  margin: 0 auto;
+  top: 1.5em;
+  left: 0;
+  right: 0;
+  text-transform: uppercase;
+}
+
 .big-movie {
   padding: 0 8.465116279%;
 }
@@ -370,6 +382,41 @@ button {
   width: 61%;
   padding: 0 0 0 10%;
 }
+
+.faq {
+  padding: 0 30%;
+
+  h1 {
+    text-align: center;
+    margin: 0 0 1.5em 0;
+  }
+  
+  h2 {
+    font-size: 24px;
+    text-transform: none;
+    margin: 0 0 9px 0;
+  }
+
+  p {
+    margin: 0 0 3.5em 0;
+  }
+}
+
+footer {
+  padding: 1.5em 0;
+  background-color: #F8F8F8;
+  font-size: 0.833333em;
+  font-weight: 400;
+  text-align: center;
+  margin: 9em 0 0 0;
+}
+
+.footer-logo {
+  display: block;
+  width: 6em;
+  margin: 1.5em auto 3em auto;
+}
+
 
 /* ==========================================================================
  Helper classes
