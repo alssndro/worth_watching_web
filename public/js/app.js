@@ -27,19 +27,21 @@ var $container = $('.movie-list').imagesLoaded( function() {
   });
 });
 
-$('#sort-menu').on( 'click', 'button', function() {
+$('#sort-menu').on('click', 'button', function() {
+  highlightControl($(this).parent(), $(this));
+
   var sortByValue = $(this).attr('data-sort-by');
   $container.isotope({ sortBy: sortByValue });
 });
 
-$('#filter-cinema').on( 'click', function() {
-  $container.isotope({ filter: '.cinema' });
+$('#filter-menu').on('click', 'button', function() {
+  highlightControl($(this).parent(), $(this));
+
+  var filterByValue = $(this).attr('data-filter-by');
+  $container.isotope({ filter: filterByValue });
 });
 
-$('#filter-dvd').on( 'click', function() {
-  $container.isotope({ filter: '.dvd' });
-});
-
-$('#filter-all').on( 'click', function() {
-  $container.isotope({ filter: '*' });
-});
+function highlightControl(menu, button) {
+  menu.find("button").css({"color": "#929292", "font-weight": 300});
+  button.css({"color": "#B37566", "font-weight": 400});
+}

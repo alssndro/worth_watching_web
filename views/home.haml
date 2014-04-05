@@ -9,20 +9,20 @@
       IMDb Rating
     %button{:data => {"sort-by" => 'metacritic_rating'}}
       Metacritic Rating
-  .list-controls
+  #filter-menu.list-controls
     %h3.controls-heading Filter By
-    %button{id: "filter-cinema"}
+    %button{:data => {"filter-by" => '.cinema'}, id: "filter-cinema"}
       Cinema/Theater
-    %button{id: "filter-dvd"}
+    %button{:data => {"filter-by" => '.dvd'}, id: "filter-dvd"}
       DVD
-    %button{id: "filter-all"}
+    %button{:data => {"filter-by" => '*'}, id: "filter-all"}
       All
 .movie-list.clearfix
   - @movies.each do |movie|
     %div{class: "movie #{movie.release_type} clearfix"}
       %a{href: "movies/#{movie.id}"}
         %img.small-poster{src: movie.poster.url(:small)}
-      .ratings    
+      .ratings
         %p.average-rating.rating
           %a{href: "movies/#{movie.id}"}
             = movie.average_rating

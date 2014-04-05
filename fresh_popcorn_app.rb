@@ -3,7 +3,6 @@ require 'sinatra/activerecord'
 
 require './models/movie'
 require './models/review'
-require 'paperclip'
 
 class FreshPopcornApp < Sinatra::Base
 

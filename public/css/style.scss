@@ -200,6 +200,10 @@ header {
     width: 20%;
     padding: 0 2%;
   }
+
+  @media (min-width: 1700px) {
+    width: 16.66666667%;
+  }
 }
 
 .list-controls {
@@ -286,7 +290,6 @@ header {
 
 .sub-rating {
   margin: 0;
-
 }
 
 button {
@@ -300,26 +303,22 @@ button {
   font-weight: 300;
   margin: 0 0 1.764705882em 0;
   text-transform: none;
+  outline: none;
 }
 
 .big-movie {
   padding: 0 8.465116279%;
-  max-width: 1091px;
-  margin: 0 auto;
 }
 
 .movie-title {
   font-size: 2.616666667em;
   text-align: center;
   margin: 0 0 1.14893617em 0;
-}
-
-.big-poster-cont {
-
+  color: $black;
 }
 
 .poster-rating {
-  margin: 0 auto;
+  float: right;
   max-width: 19.277777778em;
 }
 

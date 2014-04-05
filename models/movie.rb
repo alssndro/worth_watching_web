@@ -20,10 +20,11 @@ class Movie < ActiveRecord::Base
 
     ratings_sum = ratings.inject(0) { |sum, rating| sum += rating }
 
-    average_rating = (ratings_sum / ratings.count).round(1)
+    (ratings_sum / ratings.count).round(1)
   end
 end
 
+# Need to override these methods since we are not using Rails, otherwise errors
 module Paperclip
   module Interpolations
     # Returns the Rails.root constant.
