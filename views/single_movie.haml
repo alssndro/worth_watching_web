@@ -1,4 +1,57 @@
-%h1
-  = @movie.title
-%img{src: @movie.poster.url(:big)}
-  = @movie.average_rating
+.big-movie.clearfix
+  %h1.movie-title
+    = @movie.title
+  .big-movie-left-col.clearfix
+    .poster-rating
+      .big-poster-cont
+        %img{src: @movie.poster.url(:small)}
+      .ratings
+        %p.average-rating.rating
+          = @movie.average_rating
+        %h3.rating-heading.average-rating-heading Average Rating
+        .sub-rating-cont{title: "Rotten Tomatoes"}
+          %h3.rating-heading RT
+          %p.sub-rating.rt-rating
+            %a{href: @movie.rt_url, target: "_blank"}
+              = @movie.rt_rating/10
+        .sub-rating-cont{title: "IMDb"}
+          %h3.rating-heading IMDb
+          %p.sub-rating.imdb-rating
+            %a{href: @movie.imdb_url, target: "_blank"}
+              = @movie.imdb_rating
+        .sub-rating-cont{title: "Metacritic"}
+          %h3.rating-heading MC
+          %p.sub-rating.metacritic-rating
+            %a{href: @movie.metacritic_url, target: "_blank"}
+              = @movie.metacritic_rating/10
+  .big-movie-right-col.clearfix
+    %h2.info-title Released
+    %p
+      = @movie.release_date.strftime("%e %b %Y")
+    %h2.info-title Cast
+    %p
+      = @movie.cast
+    %h2.info-title Genre
+    %p
+      = @movie.genre
+    %h2.info-title Director
+    %p
+      = @movie.director
+    %h2.info-title Plot
+    %p
+      = @movie.plot
+  .reviews.clearfix
+    %h2.info-title Reviews
+    -@movie.reviews.each do |review|
+      .review.clearfix
+        .review-info.cleafix
+          %p
+            = review.author
+          %p
+            %a{href: review.link}
+              = review.source
+          %p
+            = review.original_score
+        .review-quote.clearfix
+          %p
+            = review.quote

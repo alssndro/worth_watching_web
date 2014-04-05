@@ -4,7 +4,7 @@
 var $container = $('.movie-list').imagesLoaded( function() {
   $container.isotope({
     itemSelector: '.movie',
-    layoutMode: 'fitRows',
+    layoutMode: 'masonry',
     sortAscending: false,
     getSortData: {
       average_rating: function(itemElem) {

@@ -1,39 +1,44 @@
-%h1 Homepage
-#sort-menu
-  %button{:data => {"sort-by" => 'average_rating'}}
-    Sort by Average Rating
-  %button{:data => {"sort-by" => 'rt_rating'}}
-    Sort by Rotten Tomatoes
-  %button{:data => {"sort-by" => 'imdb_rating'}}
-    Sort by IMDb
-  %button{:data => {"sort-by" => 'metacritic_rating'}}
-    Sort by Metacritic
-#filter-menu
-  %button{id: "filter-cinema"}
-    Only Cinema/Theater
-  %button{id: "filter-dvd"}
-    Only DVD
-  %button{id: "filter-all"}
-    All
+.filters.clearfix
+  #sort-menu.list-controls
+    %h3.controls-heading Sort By
+    %button{:data => {"sort-by" => 'average_rating'}}
+      Average Rating
+    %button{:data => {"sort-by" => 'rt_rating'}}
+      Rotten Tomatoes Rating
+    %button{:data => {"sort-by" => 'imdb_rating'}}
+      IMDb Rating
+    %button{:data => {"sort-by" => 'metacritic_rating'}}
+      Metacritic Rating
+  .list-controls
+    %h3.controls-heading Filter By
+    %button{id: "filter-cinema"}
+      Cinema/Theater
+    %button{id: "filter-dvd"}
+      DVD
+    %button{id: "filter-all"}
+      All
 .movie-list.clearfix
   - @movies.each do |movie|
     %div{class: "movie #{movie.release_type} clearfix"}
       %a{href: "movies/#{movie.id}"}
         %img.small-poster{src: movie.poster.url(:small)}
-      %h3 Average Rating
-      %p.average-rating.rating
-        = movie.average_rating
-      %h4 Rotten Tomatoes
-      %p.rt-rating.rating
-        = movie.rt_rating
-      %h4 IMDb
-      %p.imdb-rating.rating
-        = movie.imdb_rating * 10
-      %h4 Metacritic
-      %p.metacritic-rating.rating
-        = movie.metacritic_rating
-%p
-  %a{href: 'cinema'}
-    Cinema
-  %a{href: 'dvd'}
-    DVD
+      .ratings    
+        %p.average-rating.rating
+          %a{href: "movies/#{movie.id}"}
+            = movie.average_rating
+        %h3.rating-heading.average-rating-heading Average Rating
+        .sub-rating-cont{title: "Rotten Tomatoes"}
+          %h3.rating-heading RT
+          %p.sub-rating.rt-rating
+            %a{href: movie.rt_url, target: "_blank"}
+              = movie.rt_rating/10
+        .sub-rating-cont{title: "IMDb"}
+          %h3.rating-heading IMDb
+          %p.sub-rating.imdb-rating
+            %a{href: movie.imdb_url, target: "_blank"}
+              = movie.imdb_rating
+        .sub-rating-cont{title: "Metacritic"}
+          %h3.rating-heading MC
+          %p.sub-rating.metacritic-rating
+            %a{href: movie.metacritic_url, target: "_blank"}
+              = movie.metacritic_rating/10

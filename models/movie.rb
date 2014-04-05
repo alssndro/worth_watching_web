@@ -7,7 +7,7 @@ class Movie < ActiveRecord::Base
             :metacritic_rating, :metacritic_url, :director, :genre,
             :release_date , presence: true
 
-  has_attached_file :poster, styles: {small: "344x519#", big: "667x1082#"},
+  has_attached_file :poster, styles: {small: "344x519#", big: "347x540#"},
                     default_url: ("public/img/default_poster.png")
 
   validates_attachment :poster, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
