@@ -1,4 +1,4 @@
 require 'sinatra'
 
-require './fresh_popcorn_app.rb'
-run FreshPopcornApp
+require './worth_watching_app.rb'
+run WorthWatchingApp

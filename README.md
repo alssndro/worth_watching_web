@@ -3,7 +3,7 @@
 ![](screenshots/homepage.jpg)
 ![](screenshots/movie.jpg)
 
-Worth Watching (web) is a Sinatra app that displays movie rating information.
+Worth Watching (web) is a Sinatra app that displays aggregated movie rating information.
 
 It allows you to filter movies by release type (cinema/theater or DVD), and also sort
 movies based on their rating source.
@@ -36,7 +36,7 @@ to contain your API keys.
 ## Updating Movie Information
 
 As mentioned earlier, updating the movie info database is done by running a Rake task
-named update_movies.
+named ``update_movies``.
 
 This rake task (optionally) requires an argument that specifies the number of movies
 to retrieve.

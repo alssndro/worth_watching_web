@@ -3,3 +3,10 @@
 config/settings.yaml
 .sass-cache
 public/system/*
+config/deploy/*
+config/deploy
+config/deploy.rb
+lib/capistrano
+lib/capistrano/*
+config/unicorn.rb
+Capfile
