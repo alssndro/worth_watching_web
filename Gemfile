@@ -25,4 +25,7 @@ group :development do
   gem 'shotgun'
   gem 'tux'
   gem 'pry'
+  gem 'capistrano'
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-rbenv', '~> 2.0', require: false
 end

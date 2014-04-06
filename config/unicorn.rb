@@ -1,22 +1,19 @@
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 15
-preload_app true
+# set path to app that will be used to configure unicorn, 
+# note the trailing slash in this example
+@dir = "/home/sandro/apps/worth_watching_web/current/"
 
-before_fork do |server, worker|
-  Signal.trap 'TERM' do
-    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
-    Process.kill 'QUIT', Process.pid
-  end
+worker_processes 2
+working_directory @dir
 
-  defined?(ActiveRecord::Base) and
-    ActiveRecord::Base.connection.disconnect!
-end
+timeout 30
 
-after_fork do |server, worker|
-  Signal.trap 'TERM' do
-    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
-  end
+# Specify path to socket unicorn listens to, 
+# we will use this in our nginx.conf later
+listen "#{@dir}tmp/sockets/unicorn.sock", :backlog => 64
 
-  defined?(ActiveRecord::Base) and
-    ActiveRecord::Base.establish_connection
-end
+# Set process id path
+pid "#{@dir}tmp/pids/unicorn.pid"
+
+# Set log file paths
+stderr_path "#{@dir}log/unicorn.stderr.log"
+stdout_path "#{@dir}log/unicorn.stdout.log"

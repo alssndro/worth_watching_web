@@ -4,7 +4,7 @@ require 'sinatra/activerecord'
 require './models/movie'
 require './models/review'
 
-class FreshPopcornApp < Sinatra::Base
+class WorthWatchingApp < Sinatra::Base
 
   configure do
     db = URI.parse(ENV["DATABASE_URL"] || "postgres://localhost/fresh_popcorn_#{environment}")

@@ -1,4 +1,4 @@
-require './fresh_popcorn_app.rb'
+require './worth_watching_app.rb'
 require "sinatra/activerecord/rake"
 
 require 'worth_watching'
@@ -8,7 +8,7 @@ task :update_movies, [:movie_limit] do |t, args|
 
   # Default argument
   args.with_defaults(movie_limit: 5)
-  
+
   # Stop ruby buffering stdout printed status string appear immediately
   $stdout.sync = true
 
@@ -19,7 +19,6 @@ task :update_movies, [:movie_limit] do |t, args|
 
   update_movie_db(:dvd, :top_rentals, :uk, args.movie_limit)
   puts "Finished updating dvd releases\n"
-  #binding.pry
 
   # Remove old movies
   old_movies.each { |movie| movie.destroy! }
