@@ -1,0 +1,7 @@
+# Rename to settings.yaml
+
+# Rotten Tomatores API key
+rt_api_key: your_api_key
+
+# TMDB API key
+tmdb_api_key: your_api_key
