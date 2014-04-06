@@ -29,7 +29,7 @@ module Paperclip
   module Interpolations
     # Returns the Rails.root constant.
     def rails_root(attachment, style_name)
-      FreshPopcornApp.root
+      WorthWatchingApp.root
     end
 
     # Returns the Rails.env constant.
