@@ -7,7 +7,7 @@ require './models/review'
 class WorthWatchingApp < Sinatra::Base
 
   configure do
-    db = URI.parse(ENV["DATABASE_URL"] || "postgres://localhost/fresh_popcorn_#{environment}")
+    db = URI.parse(ENV["DATABASE_URL"] || "postgres://localhost/worth_watching_#{environment}")
 
     ActiveRecord::Base.establish_connection(
         :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
