@@ -1,5 +1,0 @@
-development:
-  adapter: postgresql
-  database: fresh_popcorn_dev
-  pool: 5
-  timeout: 5000

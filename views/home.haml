@@ -23,11 +23,11 @@
       %a{href: "movies/#{movie.id}"}
         -if movie.poster.url.match(/default/)
           .blank-poster
-            %img.small-poster{src: movie.poster.url(:big)}
+            %img.small-poster{src: movie.poster.url(:normal)}
             %p.blank-poster-title
               = movie.title
         -else
-          %img.small-poster{src: movie.poster.url(:big)}
+          %img.small-poster{src: movie.poster.url(:normal)}
       .ratings
         %p.average-rating.rating
           %a{href: "movies/#{movie.id}"}

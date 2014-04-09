@@ -5,6 +5,7 @@ require 'worth_watching'
 
 desc "Update movies"
 task :update_movies, [:movie_limit] do |t, args|
+  puts "Starting update at #{Time.now}...."
 
   # Default argument
   args.with_defaults(movie_limit: 5)
@@ -60,3 +61,8 @@ end
       puts update_result
     end
   end
+
+desc "Runs jpegoptim to optimise all movie poster images"
+task :optimise_images do
+  `find public/system/. -name '*.jpg' | xargs jpegoptim --max=80`
+end
