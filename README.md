@@ -8,7 +8,7 @@ Worth Watching (web) is a Sinatra app that displays aggregated movie rating info
 It allows you to filter movies by release type (cinema/theater or DVD), and also sort
 movies based on their rating source.
 
-Retreival and aggregation of movie information is facilitated by the [worth_watching ruby gem](http://github.com/alessndro/worth_watching).
+Retrieval and aggregation of movie information is facilitated by the [worth_watching ruby gem](http://github.com/alessndro/worth_watching).
 
 ### App Structure
 

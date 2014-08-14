@@ -2,7 +2,7 @@
 # note the trailing slash in this example
 @dir = "/home/sandro/apps/worth_watching_web/current/"
 
-worker_processes 2
+worker_processes 1
 working_directory @dir
 
 timeout 30
